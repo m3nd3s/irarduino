@@ -3,3 +3,8 @@
 ## Apresentadores
 * Almir Mendes <m3nd3s@gmail.com>
 * André Tagliati <tagliati@gmail.com>
+
+## Importante
+Certifique-se de que utilizará a porta 9 como sendo a entrada para o IR.
+
+Você também precisará da biblioteca IRRemote que pode ser encontrada em: http://www.arcfn.com/2010/11/control-your-mouse-with-ir-remote.html
