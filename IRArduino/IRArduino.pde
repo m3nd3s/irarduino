@@ -30,6 +30,9 @@ void loop() {
       case 0x2fd7887:
         Serial.println("back");
       break;
+      
+      default:
+        Serial.print("");
     }
     //Serial.println(results.value, HEX);
     irrecv.resume(); // Receive the next value
