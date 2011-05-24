@@ -1,10 +1,29 @@
 require "serialport"
 
+class OSCommand
+  def self.next
+    if /darwin/ =~ RUBY_PLATFORM
+      `/usr/local/bin/comando.sh 'next'`
+    else
+      `xsendkeycode 117 1 && xsendkeycode 117 0`
+    end
+  end
+
+  def self.back
+    if /darwin/ =~ RUBY_PLATFORM
+      `/usr/local/bin/comando.sh 'back'`
+    else
+      `xsendkeycode 112 1 && xsendkeycode 112 0`
+    end
+  end
+end
+
 class ReadSerial
   def self.run
 
     #params for serial port
-    port_str = "/dev/ttyUSB1"  #may be different for you
+    #port_str = "/dev/ttyUSB1"  #may be different for you
+    port_str = "/dev/tty.usbserial-A400fQSU"  #may be different for you
     baud_rate = 9600
     data_bits = 8
     stop_bits = 1
@@ -18,12 +37,12 @@ class ReadSerial
       key += ( sp.getc || "" )
 
       if key.strip.eql?("next")
-        `xsendkeycode 117 1 && xsendkeycode 117 0`
+        OSCommand.next
         key = ""
       end
       
       if key.strip.eql?("back")
-        `xsendkeycode 112 1 && xsendkeycode 112 0`
+        OSCommand.back
         key = ""
       end
 
