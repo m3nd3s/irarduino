@@ -15,6 +15,12 @@ IRrecv irrecv(RECV_PIN);
 
 decode_results results;
 
+void blink_led() {
+  digitalWrite(LED, HIGH);
+  delay(400);
+  digitalWrite(LED, LOW);
+}
+
 void setup()
 {
   Serial.begin(9600);
@@ -27,18 +33,14 @@ void loop() {
     switch ( results.value ) {
       case 0x2fd58a7:
       case 0xFF50AF:
-        digitalWrite(LED, HIGH);
-        delay(500);
-        digitalWrite(LED, LOW);
         Serial.println("next");
+        blink_led();
       break;
       
       case 0x2fd7887:
       case 0xFF10EF:
-        digitalWrite(LED, HIGH);
-        delay(500);
-        digitalWrite(LED, LOW);
         Serial.println("back");
+        blink_led();
       break;
       
       default:
