@@ -9,6 +9,7 @@
 #include <IRremote.h>
 
 int RECV_PIN = 9;
+int LED = 8;
 
 IRrecv irrecv(RECV_PIN);
 
@@ -18,16 +19,25 @@ void setup()
 {
   Serial.begin(9600);
   irrecv.enableIRIn(); // Start the receiver
+  pinMode(LED, OUTPUT);    
 }
 
 void loop() {
   if (irrecv.decode(&results)) {
     switch ( results.value ) {
       case 0x2fd58a7:
+      case 0xFF50AF:
+        digitalWrite(LED, HIGH);
+        delay(500);
+        digitalWrite(LED, LOW);
         Serial.println("next");
       break;
       
       case 0x2fd7887:
+      case 0xFF10EF:
+        digitalWrite(LED, HIGH);
+        delay(500);
+        digitalWrite(LED, LOW);
         Serial.println("back");
       break;
       
