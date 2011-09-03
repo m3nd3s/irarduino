@@ -17,7 +17,7 @@ decode_results results;
 
 void blink_led() {
   digitalWrite(LED, HIGH);
-  delay(400);
+  delay(200);
   digitalWrite(LED, LOW);
 }
 
@@ -42,9 +42,6 @@ void loop() {
         Serial.println("back");
         blink_led();
       break;
-      
-      default:
-        Serial.print("");
     }
     //Serial.println(results.value, HEX);
     irrecv.resume(); // Receive the next value
