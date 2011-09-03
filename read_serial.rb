@@ -33,18 +33,18 @@ class ReadSerial
     sp = SerialPort.new(port_str, baud_rate, data_bits, stop_bits, parity)
 
     #just read forever
-    key = ""
     while true do
-      key += ( sp.getc || "" )
-
-      if key.strip.eql?("next")
-        OSCommand.next
-        key = ""
-      end
-      
-      if key.strip.eql?("back")
-        OSCommand.back
-        key = ""
+      cmd = sp.getc
+      if cmd
+        if cmd.eql?('n')
+          puts cmd
+          OSCommand.next
+        end
+        
+        if cmd.eql?('p')
+          puts cmd
+          OSCommand.back
+        end
       end
 
     end

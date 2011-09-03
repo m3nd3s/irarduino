@@ -33,14 +33,16 @@ void loop() {
     switch ( results.value ) {
       case 0x2fd58a7:
       case 0xFF50AF:
-        Serial.println("next");
+        Serial.println("n");
         blink_led();
+        delay(500);
       break;
       
       case 0x2fd7887:
       case 0xFF10EF:
-        Serial.println("back");
+        Serial.println("p");
         blink_led();
+        delay(500);
       break;
     }
     //Serial.println(results.value, HEX);
